@@ -9,8 +9,8 @@
 
     <template class='template' id='template_option'>
         <div class="wheelOption">
-            <button type="button" class="wo_remove small red">x</button>
-            <button type="button" class="wo_clear small">/</button>
+            <button type="button" title="Remove Field" class="wo_remove small red">x</button>
+            <button type="button" title="Clear Field" class="wo_clear small">/</button>
             <input
                 type='text'
                 class="wo_input"
@@ -18,7 +18,7 @@
                 data-formkey='option'
                 tabindex="1"
             />
-            <button type="button" class="wo_dupe small">&amp;</button>
+            <button type="button" title="Duplicate Field" class="wo_dupe small">&amp;</button>
         </div>
     </template>
 
@@ -26,11 +26,11 @@
         <div id="config">
             <form id="wheelForm" class="fullWidth">
                 <fieldset id="controls" class="stretch">
+                    <button type="submit" title="Update wheel with the listed fields" id="saveBtn" class="blue">Update Wheel</button>
                     <div class="stretch">
-                        <button type="button" id="resetBtn">[ / ] Clear All</button>
-                        <button type="button" id="addBtn">[+] Add Option</button>
+                        <button type="button" title="Clear all option fields" id="resetBtn">[ / ] Clear All</button>
+                        <button type="button" title="Add an empty new option field" id="addBtn">[+] Add Option</button>
                     </div>
-                    <button type="submit" id="saveBtn" class="blue">Update Wheel</button>
                 </fieldset>
                 <br />
                 <fieldset id="options"></fieldset>
