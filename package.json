@@ -1,0 +1,18 @@
+{
+  "name": "spinner",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "GeordieP <gp@gpow.ca>",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "npm run clean && parcel build src/index.html -d docs/ --no-source-maps --public-url https://geordiep.github.io/spinner/",
+    "clean": "rm -rf docs/ dist/ .cache/"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.9.7"
+  },
+  "dependencies": {
+    "reset.css": "^2.0.2"
+  }
+}
