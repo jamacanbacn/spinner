@@ -12,13 +12,13 @@ const bySel = (sel, root = document) => root.querySelector(sel);
 function createInput(value) {
     const node = document.importNode(byId('template_option').content, true);
 
-    const input = bySel('.wheelOptionInput', node);
+    const input = bySel('.wo_input', node);
     input.value = value || '';
     input.addEventListener('blur', updateWheel);
 
-    bySel('.wheelOptionInputRemove', node).addEventListener('click', removeInput);
-    bySel('.wheelOptionInputClear', node).addEventListener('click', clearInput);
-    bySel('.wheelOptionInputDuplicate', node).addEventListener('click', duplicateInput);
+    bySel('.wo_remove', node).addEventListener('click', removeInput);
+    bySel('.wo_clear', node).addEventListener('click', clearInput);
+    bySel('.wo_dupe', node).addEventListener('click', duplicateInput);
 
     return node;
 }
@@ -31,7 +31,7 @@ function addInput(_, optionalValue) {
 
 // Duplicate an existing option input block, and insert it above the node that triggered the event.
 function duplicateInput(e) {
-    const value = bySel('.wheelOptionInput', e.target.parentNode).value;
+    const value = bySel('.wo_input', e.target.parentNode).value;
     const node = createInput(value);
     byId('options').insertBefore(node, e.target.parentNode);
     updateWheel();
@@ -39,7 +39,7 @@ function duplicateInput(e) {
 
 // Reset the value of an associated input field, and update wheel labels to reflect the change.
 function clearInput(e) {
-    e.target.parentNode.getElementsByClassName('wheelOptionInput')[0].value = '';
+    e.target.parentNode.getElementsByClassName('wo_input')[0].value = '';
     updateWheel();
 }
 
@@ -54,7 +54,7 @@ function removeInput(e) {
 
 // Clear all option fields from the form.
 function resetFields() {
-    Array.from(byClass('wheelOptionInput'))
+    Array.from(byClass('wo_input'))
         .forEach(el => { el.value = '' });
     updateWheel();
 }
@@ -64,7 +64,7 @@ function resetFields() {
 function updateWheel(e) {
     if (e) e.preventDefault();
 
-    const options = Array.from(byClass('wheelOptionInput'))
+    const options = Array.from(byClass('wo_input'))
         .reduce((ac, el) => {
             if (el && el.value && el.value != '') ac.push(el.value);
             return ac;
