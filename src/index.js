@@ -8,17 +8,33 @@ const bySel = (sel, root = document) => root.querySelector(sel);
 // Form functionality
 // -----------------------------------------------------------------------------
 
-// Add an input field to the form, along with its control buttons their event listeners.
-function addInput(e, optionalValue) {
+// Create an option input field block along with its control buttons and their event listeners.
+function createInput(value) {
     const node = document.importNode(byId('template_option').content, true);
-    const input = bySel('.wheelOptionInput', node);
 
-    if (optionalValue) input.value = optionalValue;
+    const input = bySel('.wheelOptionInput', node);
+    input.value = value || '';
     input.addEventListener('blur', updateWheel);
 
     bySel('.wheelOptionInputRemove', node).addEventListener('click', removeInput);
     bySel('.wheelOptionInputClear', node).addEventListener('click', clearInput);
+    bySel('.wheelOptionInputDuplicate', node).addEventListener('click', duplicateInput);
+
+    return node;
+}
+
+// Append an option input field block to the form
+function addInput(_, optionalValue) {
+    const node = createInput(optionalValue);
     byId('options').appendChild(node);
+}
+
+// Duplicate an existing option input block, and insert it above the node that triggered the event.
+function duplicateInput(e) {
+    const value = bySel('.wheelOptionInput', e.target.parentNode).value;
+    const node = createInput(value);
+    byId('options').insertBefore(node, e.target.parentNode);
+    updateWheel();
 }
 
 // Reset the value of an associated input field, and update wheel labels to reflect the change.
@@ -57,7 +73,7 @@ function updateWheel(e) {
     setLabels(options);
 }
 
-// Set up button listeners.
+// Set up control button listeners.
 byId('resetBtn').addEventListener('click', resetFields);
 byId('addBtn').addEventListener('click', addInput);
 byId('wheelForm').addEventListener('submit', updateWheel);
