@@ -77,7 +77,7 @@ button.blue:active { background: linear-gradient(to bottom, #003058 , #00589e); 
 
 #resultsList li:nth-child(1) {
     font-size: 30pt;
-    color: lime;
+    color: skyblue;
 }
 
 #resultsList li:nth-child(2) {

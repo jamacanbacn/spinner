@@ -27,7 +27,7 @@ const palettes = [
 const colors = palettes[Math.floor(Math.random() * palettes.length)];
 const CLR_WHITE = 'white';
 const CLR_BLACK = 'black';
-const CLR_LIME   = 'lime';
+const CLR_EMPTY = 'transparent';
 
 const TWOPI        = Math.PI * 2;    // util/QoL variable
 
@@ -168,9 +168,10 @@ function paint() {
         ctx.lineTo(SIZE, HALF_SIZE + ARROW_SIZE); // top point
         ctx.lineTo(SIZE - ARROW_SIZE, HALF_SIZE); // back to tip
         // fill with white if the arrow is 'ticking' (passing over the boundary
-        // between two segments), otherwise black.
-        if (spinning) ctx.fillStyle = ticking ? CLR_WHITE : CLR_BLACK;
-        else ctx.fillStyle = CLR_LIME;
+        // between two segments), otherwise transparent.
+        // if we're no longer spinning, fill it with black.
+        if (spinning) ctx.fillStyle = ticking ? CLR_WHITE : CLR_EMPTY;
+        else ctx.fillStyle = CLR_BLACK;
         ctx.fill();
         ctx.stroke();
         ctx.closePath();
