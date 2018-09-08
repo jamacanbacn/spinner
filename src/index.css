@@ -54,6 +54,22 @@ button.blue:active { background: linear-gradient(to bottom, #003058 , #00589e); 
 .stretch button { width: 100%; }
 .fullWidth { width: 100%; }
 
+.flexV {
+    display: flex;
+    flex-direction: row;
+}
+
+.flexH {
+    display: flex;
+    flex-direction: column;
+}
+
+.centerAll {
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
 #config, #wheel, #results {
     display: flex;
     justify-content: center;
@@ -88,4 +104,14 @@ button.blue:active { background: linear-gradient(to bottom, #003058 , #00589e); 
 #resultsList li:nth-child(3) {
     font-size: 22pt;
     color: #555;
+}
+
+.credits {
+    font-size: 9pt;
+    color: #333;
+    margin-top: 15px;
+}
+
+.credits a {
+    color: #444;
 }
