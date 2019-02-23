@@ -11,11 +11,31 @@ html {
 }
 
 body {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    height: 100%;
     width: 100%;
-    background: #111111;
+    height: 100%;
+    display: grid;
+    background: #111;
+    grid-template-columns: auto 70%;
+    grid-template-rows: auto 100px;
+    grid-template-areas:
+        "Layout_Config Layout_Wheel"
+        "Layout_Results Layout_Results";
+}
+
+#Layout_Config {
+    grid-area: Layout_Config;
+    overflow: auto;
+}
+
+#Layout_Wheel {
+    grid-area: Layout_Wheel;
+    padding: 10px;
+}
+
+#Layout_Results {
+    grid-area: Layout_Results;
+    padding: 0 10px;
+    overflow: auto;
 }
 
 h1 {
@@ -25,16 +45,21 @@ h1 {
     margin-bottom: 20px;
 }
 
+input, button {
+    border: none;
+    padding: 5px 9px;
+    border-radius: 4px;
+    margin: 1px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+input:hover, button:hover {
+    color: #fff;
+}
+
 input {
     background: #282828;
     width: 100%;
-}
-
-input, button {
-    border: none;
-    padding: 8px 12px;
-    border-radius: 9px;
-    margin: 2px;
     color: #fff;
 }
 
@@ -52,7 +77,9 @@ button.blue:active { background: linear-gradient(to bottom, #003058 , #00589e); 
 
 .stretch { display: flex; }
 .stretch button { width: 100%; }
+
 .fullWidth { width: 100%; }
+.fullHeight { height: 100%; }
 
 .flexV {
     display: flex;
@@ -70,39 +97,32 @@ button.blue:active { background: linear-gradient(to bottom, #003058 , #00589e); 
     align-content: center;
 }
 
-#config, #wheel, #results {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 30px 15px;
-    overflow: auto;
-}
-
-#resultsContainer { text-align: right; }
-
 .wheelOption { display: flex; }
 
 #spinner_wheel, button { cursor: pointer; }
 
+#resultsList {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 #resultsList li {
-    font-size: 18pt;
+    font-size: 16pt;
     color: #444;
-    border-bottom: 1px solid #222;
-    padding: 5px 0;
+    margin-right: 25px;
 }
 
 #resultsList li:nth-child(1) {
-    font-size: 30pt;
     color: skyblue;
+    font-size: 20pt;
 }
 
 #resultsList li:nth-child(2) {
-    font-size: 27pt;
     color: #999;
 }
 
 #resultsList li:nth-child(3) {
-    font-size: 22pt;
     color: #555;
 }
 

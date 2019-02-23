@@ -9,10 +9,25 @@ canvas.addEventListener('click', spin);
 
 // Set up global context properties.
 const ctx = canvas.getContext('2d');
-ctx.font         = '20px Arial';
+ctx.font         = `15px Arial`;
 ctx.textBaseline = 'middle';
 ctx.textAlign    = 'center';
 ctx.lineWidth    = 1;
+
+resize();
+window.addEventListener("resize", () => {
+    resize();
+    paint();
+});
+
+// Resize the canvas to fit the available space.
+function resize() {
+    const canvasParent = canvas.parentElement;
+    const size = Math.min(canvasParent.offsetWidth, canvasParent.offsetHeight);
+    canvas.width = size;
+    canvas.height = size;
+    ctx.font = `${size * 0.022}px Arial`;
+}
 
 // Constants
 // -----------------------------------------------------------------------------
@@ -73,7 +88,6 @@ export function setLabels(newLabels) {
         ctx.translate(-HALF_SIZE/2, -HALF_SIZE);
         return;
     }
-
 
     // if we're given only 1 label, rotate the angle by 180deg so the
     // text renders right-side up.
@@ -185,7 +199,7 @@ function paint() {
         ctx.rotate(drawAngle + halfSlice);
         // draw text
         ctx.fillStyle = CLR_WHITE;
-        ctx.fillText(labels[i], RADIUS / 2, 0, RADIUS);
+        ctx.fillText(labels[i], RADIUS / 4, 0, RADIUS);
 
         // reset canvas rotation and translation for next cycle
         ctx.rotate(-(drawAngle + halfSlice));
