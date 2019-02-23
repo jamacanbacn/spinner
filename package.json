@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "GeordieP <gp@gpow.ca>",
   "scripts": {
-    "start": "parcel src/index.html",
+    "start": "parcel src/index.html --no-hmr",
     "build": "npm run clean && parcel build src/index.html -d docs/ --no-source-maps --public-url https://geordiep.github.io/spinner",
     "clean": "rm -rf docs/ dist/ .cache/"
   },

@@ -84,12 +84,18 @@ byId('wheelForm').addEventListener('submit', updateWheel);
 // initially reset the page
 resetFields();
 
-// Defaults with values - send only these (no empties) to wheel
-const defaults = [ 'Spin Again' ];
+// Default list items
+// Parse items out of URL query string, or default to just "Spin Again".
+const queryStringItems = new URLSearchParams(window.location.search)
+    .get('items');
+
+const defaults = (queryStringItems && queryStringItems.length > 0)
+    ? queryStringItems.split(',')
+    : [ 'Spin Again' ];
 setLabels(defaults);
 
-// easiest way to add empty fields
-const padding = new Array(15).fill('');
+// page should start with 10 fields. Add as many as we need to get there.
+const padding = new Array(10 - defaults.length).fill('');
 [...defaults, ...padding].forEach(val => addInput(null, val));
 
 // Results
