@@ -58,7 +58,6 @@ function resetFields() {
         .forEach(el => { el.value = '' });
     updateWheel();
 }
-
 // Collect all relevant form inputs, create an array from the non-empty values,
 // and turn it into wheel labels.
 function updateWheel(e) {
@@ -77,6 +76,7 @@ function updateWheel(e) {
 byId('resetBtn').addEventListener('click', resetFields);
 byId('addBtn').addEventListener('click', addInput);
 byId('wheelForm').addEventListener('submit', updateWheel);
+byId('resultsBtn').addEventListener('click',clearResults);
 
 // Wheel / Options setup - Initial fields/labels
 // -----------------------------------------------------------------------------
