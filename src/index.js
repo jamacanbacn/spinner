@@ -76,7 +76,7 @@ function updateWheel(e) {
 byId('resetBtn').addEventListener('click', resetFields);
 byId('addBtn').addEventListener('click', addInput);
 byId('wheelForm').addEventListener('submit', updateWheel);
-byId('resultsBtn').addEventListener('click',clearResults);
+byId('resultsBtn').addEventListener('click', clearResults);
 
 // Wheel / Options setup - Initial fields/labels
 // -----------------------------------------------------------------------------
